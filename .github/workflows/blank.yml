@@ -2,19 +2,19 @@
 
 name: Main workflow
 
+on:
+  push:
+    branches: [master]
 
-  my_job 
-  build:
-    if: github.event.pull_request.merged == true
+jobs:
+  merge-master-to-develop:
     name: Merge master -> develop
     runs-on: ubuntu-latest
 
-     steps:
+    steps:
         uses: tukasz/direct-merge-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          owner: tukasz
-          repo: direct-merge-action
           source-branch: master
           target-branch: develop
-          commit-message: "Lorem ipsum..."
+
