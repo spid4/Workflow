@@ -1,0 +1,20 @@
+# .github/workflows/main.yml
+
+name: Main workflow
+
+
+  my_job 
+  build:
+    if: github.event.pull_request.merged == true
+    name: Merge master -> develop
+    runs-on: ubuntu-latest
+
+     steps:
+        uses: tukasz/direct-merge-action@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          owner: tukasz
+          repo: direct-merge-action
+          source-branch: master
+          target-branch: develop
+          commit-message: "Lorem ipsum..."
