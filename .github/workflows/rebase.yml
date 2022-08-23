@@ -1,17 +1,14 @@
 name: ci
 
 on:
-  pull_request_target:
-    branches:
-      - main
-    types:
-      - closed
   pull_request:
-   branches:
-      - main
+    branches: [ test/** ]
+
+  pull_request_target:
+    branches: [ main ]
+   
   
-
-
+  
 jobs:
   build:
     if: ${{ github.event.pull_request.merged }}
